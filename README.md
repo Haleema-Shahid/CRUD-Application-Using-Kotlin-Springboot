@@ -19,13 +19,13 @@ Alternatively, you can use Docker Compose to simplify the setup:
 1. Clone the repository:
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Haleema-Shahid/CRUD-Application-Using-Kotlin-Springboot.git
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd team-service
+   cd CRUD-Application-Using-Kotlin-Springboot
    ```
 
 3. Run the Docker Compose:
@@ -36,7 +36,7 @@ Alternatively, you can use Docker Compose to simplify the setup:
 
 The application should be available at `http://localhost:8080`.
 
-## API Endpoints
+## Given API Endpoints
 
 - **Users API:** `https://cgjresszgg.execute-api.eu-west-1.amazonaws.com/users/`
 - **Teams API:** `https://cgjresszgg.execute-api.eu-west-1.amazonaws.com/teams/`
@@ -52,6 +52,17 @@ The service introduces Team Roles, with three pre-defined roles:
 3. Tester
 
 "Developer" is set as the default role.
+
+## Added API Endpoints
+
+To load data (all users all developers by default)
+-**/load** `http://localhost:8080/load`
+
+To assign roles to product owners (assumption: team leads are product owners)
+-**/assignRoles** `http://localhost:8080/assignRoles`
+
+To assign role TESTER to user with given userId
+-**/assignTesterRoleTo/{userID}** `http://localhost:8080/assignTesterRoleTo/{id}`
 
 ## Unit Tests
 
