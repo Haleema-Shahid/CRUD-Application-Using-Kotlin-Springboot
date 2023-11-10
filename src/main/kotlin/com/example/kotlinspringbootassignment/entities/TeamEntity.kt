@@ -10,13 +10,13 @@ import java.util.UUID
 @Entity
 @Table(name = "team")
 data class TeamEntity(
-    @Id
+        @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     val id: UUID? = null, // Changed UUID to nullable
 
-    val name: String="",
-    val teamLeadId: String="",
+        val name: String="",
+        val teamLeadId: UUID?=null,
 
-    @ElementCollection
-    val teamMemberIds: List<UUID> = emptyList(),
+        @ElementCollection
+    val teamMemberIds: MutableList<UUID> = mutableListOf(),
 )

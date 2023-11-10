@@ -9,14 +9,14 @@ import com.example.kotlinspringbootassignment.services.UserService
 import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RestController
-import okhttp3.OkHttpClient
-import okhttp3.Request
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.client.RestTemplate
-import java.util.UUID
+import java.util.*
 
 @RestController
 class Controller(
@@ -65,8 +65,8 @@ class Controller(
     }
 
 //
-    @GetMapping("/loadAndAssign")
-    fun loadDataAndAssignRoles(): String{
+    @GetMapping("/load")
+    fun loadData(): String{
         val usersFromApi = fetchUsers()
         val teamsFromApi = fetchTeams()
 
@@ -92,6 +92,31 @@ class Controller(
         teamService.addAllTeams(teamsList)
         return "done"
     }
+
+    @GetMapping("/assignRoles")
+    fun assignRoles(): ResponseEntity<String> {
+        return try {
+            userService.assignRoles()
+            ResponseEntity("assigned roles successfully!", HttpStatus.OK)
+        }
+        catch (e:Exception){
+            ResponseEntity("assignment of roles failed!", HttpStatus.INTERNAL_SERVER_ERROR)
+        }
+    }
+
+    @PostMapping("/assignTesterRoleTo/{userId}")
+    fun assignTesterRoleToUser(@PathVariable userId: UUID): ResponseEntity<String>{
+        return try{
+            val tester: UserEntity = userService.assignTesterRoleTo(userId)
+            ResponseEntity("role assigned succesfully!"+"\nUserId: "+tester.id+"\nRole: "+tester.role, HttpStatus.OK)
+        }
+        catch(e: Exception){
+            ResponseEntity("Tester assignment failed!", HttpStatus.INTERNAL_SERVER_ERROR)
+        }
+
+    }
+
+
 
 
 

@@ -1,11 +1,8 @@
 package com.example.kotlinspringbootassignment.entities
 
+import com.example.kotlinspringbootassignment.enums.Role
 import jakarta.persistence.*
-import lombok.AllArgsConstructor
-import lombok.Getter
-import lombok.NoArgsConstructor
-import lombok.Setter
-import java.util.UUID
+import java.util.*
 
 
 @Entity
@@ -15,15 +12,15 @@ import java.util.UUID
 //@AllArgsConstructor
 //@NoArgsConstructor
 class UserEntity(
-    @Id
+        @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     val id: UUID? = null,
-
-    val firstName: String="",
-    val lastName: String="",
-    val displayName: String="",
-    val avatarUrl: String="",
-    val location: String=""
+        var role: Enum<Role> = Role.DEVELOPER,
+        val firstName: String="",
+        val lastName: String="",
+        val displayName: String="",
+        val avatarUrl: String="",
+        val location: String="",
 ){
 
 }

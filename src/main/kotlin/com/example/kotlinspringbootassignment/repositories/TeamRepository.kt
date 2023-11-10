@@ -7,4 +7,5 @@ import java.util.UUID
 
 @Repository
 interface TeamRepository: JpaRepository<TeamEntity, UUID> {
+
 }

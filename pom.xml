@@ -167,6 +167,7 @@
                 </dependencies>
             </plugin>
         </plugins>
+        <finalName>kotlin-springboot-assignment</finalName>
     </build>
 
 </project>
