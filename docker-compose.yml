@@ -1,0 +1,6 @@
+version: '0.0'
+services:
+  kotlin-springboot-assignment:
+    image: kotlin-springboot-assignment
+    ports:
+      - "8080:8080"

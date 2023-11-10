@@ -1,5 +1,3 @@
-Sure, here is a basic outline for your README.md file:
-
 # Team Service
 
 ## Overview

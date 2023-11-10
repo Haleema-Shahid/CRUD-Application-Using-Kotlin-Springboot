@@ -12,8 +12,10 @@ import org.mockito.Mock
 import org.mockito.Mockito.verify
 import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
+import org.springframework.boot.test.context.SpringBootTest
 import java.util.*
 
+@SpringBootTest
 class UserServiceImplTests {
 
     @Mock
